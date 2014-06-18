@@ -38,7 +38,7 @@ public class JodaDialect extends AbstractDialect implements IExpressionEnhancing
         final IContext context = processingContext.getContext();
         final IWebContext webContext = (context instanceof IWebContext ? (IWebContext) context : null);
 
-        final Map<String, Object> objects = new HashMap<>(1, 1.0f);
+        final Map<String, Object> objects = new HashMap<String, Object>(1, 1.0f);
 
 		/*
          * Create the #joda expression object
