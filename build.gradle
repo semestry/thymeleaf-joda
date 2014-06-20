@@ -1,12 +1,15 @@
 description = "Thymeleaf dialect for Joda time"
 group = 'nl.eveoh.thymeleaf'
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-version = '1.1.RELEASE'
+version = '1.2.RELEASE'
 
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'maven-publish'
+
+compileJava {
+    sourceCompatibility = 1.6
+    targetCompatibility = 1.6
+}
 
 jar {
     manifest {
