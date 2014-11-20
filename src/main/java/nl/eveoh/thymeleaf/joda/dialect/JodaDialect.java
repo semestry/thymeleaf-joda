@@ -1,16 +1,12 @@
 package nl.eveoh.thymeleaf.joda.dialect;
 
-import nl.eveoh.thymeleaf.joda.expression.Joda;
 import nl.eveoh.thymeleaf.joda.expression.JodaImpl;
-import org.thymeleaf.context.IContext;
 import org.thymeleaf.context.IProcessingContext;
-import org.thymeleaf.context.IWebContext;
 import org.thymeleaf.dialect.AbstractDialect;
 import org.thymeleaf.dialect.IExpressionEnhancingDialect;
 
-import javax.servlet.http.HttpServletRequest;
-
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -35,25 +31,11 @@ public class JodaDialect extends AbstractDialect implements IExpressionEnhancing
 
     @Override
     public Map<String, Object> getAdditionalExpressionObjects(IProcessingContext processingContext) {
-        final IContext context = processingContext.getContext();
-        final IWebContext webContext = (context instanceof IWebContext ? (IWebContext) context : null);
+        Locale locale = processingContext.getContext().getLocale();
 
-        final Map<String, Object> objects = new HashMap<String, Object>(1, 1.0f);
+        Map<String, Object> expressionObjects = new HashMap<String, Object>();
+        expressionObjects.put(JODA_EXPRESSION_OBJECT_NAME, new JodaImpl(locale));
 
-		/*
-         * Create the #joda expression object
-		 */
-        if (webContext != null) {
-            final HttpServletRequest request = webContext.getHttpServletRequest();
-
-            if (request != null) {
-                final Joda joda = new JodaImpl(request.getLocale());
-
-                objects.put(JODA_EXPRESSION_OBJECT_NAME, joda);
-            }
-
-        }
-
-        return objects;
+        return expressionObjects;
     }
 }
