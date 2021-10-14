@@ -1,5 +1,11 @@
 Thymeleaf - Joda module
 =======================
+______
+
+### ⚠ Deprecation notice
+This project in no longer being maintained. Through with `thymeleaf-extras-java8time`, Thymeleaf provides support for JSR-310 date/time classes, so you might want to use those instead.
+
+______
 
 Inspired by [Thymeleaf Spring Security 3 integration module](https://github.com/thymeleaf/thymeleaf-extras-springsecurity3)
 
